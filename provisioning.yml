@@ -16,5 +16,9 @@
         - mysql-server-5.6
         - python-mysqldb
         - php5-mysql
-        
+    - name: 'Criar o banco do MySQL'
+      mysql_db:
+        name: wordpress_db
+        login_user: root
+        state: present     # absent = use este para escluir um banco de dados
  
