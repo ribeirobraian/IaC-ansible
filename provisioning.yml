@@ -22,3 +22,10 @@
         login_user: root
         state: present     # absent = use este para escluir um banco de dados
  
+    - name: 'Cria o usuário do MySQL'
+      mysql_user:
+        name: wordpress_db
+        password: 12345
+        priv: 'wordpress_db.*.ALL'
+        state: present
+        
