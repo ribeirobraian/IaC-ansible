@@ -22,6 +22,11 @@
         password: 12345
         priv: 'wordpress_db.*.ALL'
         state: present
+        host: "{{ item }}"
+      with_items:
+        - 'localhost'
+        - '127.0.0.1'
+        - '172.17.177.40'
 
 - hosts: wordpress
   tasks:
@@ -67,6 +72,7 @@
         - { regex: 'database_name_here', value: 'wordpress_db'}
         - { regex: 'username_here', value: 'wordpress_user'}
         - { regex: 'password_here', value: '12345'}
+        - { regex: 'localhost', value: '172.12.177.42'}
       become: yes
     
     - name: 'Configura Apache para servir o Wordpress'
